@@ -27,18 +27,14 @@ const images = [
 
 const gallery = document.querySelector(".gallery");
 
-for (let i = 0; i < 3; i++) {
-  const imageLi = document.createElement("li");
-  imageLi.classList.add("photo-list");
-  ("use strict");
+const item = images
+  .slice(0, 3)
+  .map(
+    (image) =>
+      `<li class="photo-list"><img class="photo" src="${image["url"]}" alt="${image["alt"]}"/></li>`
+  );
 
-  const photo = document.createElement("img");
-  photo.classList.add("photo");
-  imageLi.append(photo);
-  photo.setAttribute("src", images[i].url);
-  photo.setAttribute("alt", images[i].alt);
-  gallery.append(imageLi);
-}
+gallery.insertAdjacentHTML("afterbegin", item);
 
 const imageStyle = document.querySelectorAll(".photo");
 

@@ -9,7 +9,7 @@ document
   .addEventListener("click", (event) => {
     const value1 = document.querySelector("input");
     createBoxes(value1.value);
-    value1.value = null;
+    value1.value = "";
   });
 
 document
@@ -20,7 +20,8 @@ document
 
 function createBoxes(amount) {
   let boxes = document.querySelector("#boxes");
-  if (amount <= 100) {
+  const inputValue = +amount;
+  if (inputValue > 0 && inputValue <= 100 && inputValue != NaN) {
     boxes.innerHTML = "";
     let size = 30;
     for (let i = 0; i < amount; i++) {
@@ -33,6 +34,9 @@ function createBoxes(amount) {
     }
   }
 }
+
+// при перевірці розміру першого div у консолі розробника, відображає 30px,
+// а наступні збільшуються на 10, не розумію в чому помилка, підкажіть будь ласка, дякую :)
 
 function destroyBoxes() {
   let boxes = document.querySelector("#boxes");
